@@ -1,0 +1,6 @@
+dist
+.venv
+poetry.lock
+.nox
+.idea
+.vscode

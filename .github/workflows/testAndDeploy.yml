@@ -1,0 +1,88 @@
+name: 'test-and-release-build'
+
+on:
+  push:
+    branches:
+      - master
+      - test
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: 'deploy build'
+        required: false
+        type: boolean
+        default: false
+
+
+permissions:
+    contents: write
+
+jobs:
+
+  test-build:
+    name: Tests package
+    runs-on: 'ubuntu-latest'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+
+      - name: Set up venv
+        run: |
+          python -m venv venv
+
+      - name: Activate venv
+        run: |
+          source ./venv/bin/activate
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install poetry nox
+
+
+  release-build:
+    needs: test-build
+    name: releases package to pypi
+    runs-on: 'ubuntu-latest'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+
+      - name: Set up venv
+        run: |
+          python -m venv venv
+
+      - name: Activate venv
+        run: | 
+          source ./venv/bin/activate
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install poetry
+
+      - name: Publish a Package
+        run: poetry publish --build
+
+      - name: fetch dashboard-version
+        id: version
+        run: bash .github/scripts/get-version.sh
+
+      - name: create release
+        uses: softprops/action-gh-release@v2
+        id: release
+        with:
+          files: dashboard.tar.bz2
+          body: ":rocket: Bump ANSIToHTML version to `${{ steps.version.outputs.VERSION }}`"
+          tag_name: ${{ steps.version.outputs.VERSION }}
+          name: "ANSIToHTML v${{ steps.version.outputs.VERSION }}"
+          generate_release_notes: true
