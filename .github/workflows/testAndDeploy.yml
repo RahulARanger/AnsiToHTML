@@ -20,7 +20,6 @@ permissions:
 jobs:
 
   test-build:
-    if: ${{ !inputs.deploy }}
     name: Tests package
     runs-on: 'ubuntu-latest'
 
