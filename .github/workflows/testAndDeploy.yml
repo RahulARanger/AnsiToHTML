@@ -23,6 +23,7 @@ jobs:
     if: ${{ !inputs.deploy }}
     name: Tests package
     runs-on: 'ubuntu-latest'
+
     steps:
       - uses: actions/checkout@v4
 
@@ -75,9 +76,9 @@ jobs:
       - name: Publish a Package
         env:
           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
-          run: |
-            poetry config pypi-token.pypi $PYPI_TOKEN
-            poetry publish --build
+        run: |
+          poetry config pypi-token.pypi $PYPI_TOKEN
+          poetry publish --build
 
       - name: fetch dashboard-version
         id: version
