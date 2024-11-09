@@ -175,6 +175,11 @@ class Parser:
                 MatchedChunk(found_match.group("code"), found_match.start(), found_match.end())
             )
 
+        if not chunks:
+            if not self.dom.text:
+                self.dom.text = ""
+            self.dom.text += paragraph
+
         for index, chunk in enumerate(chunks):
             self.add_to_dom(chunk, index, chunks, paragraph)
 
@@ -182,7 +187,7 @@ class Parser:
 
 
 if __name__ == "__main__":
-    message = "\033[1m\033[31mHello, \033[32mWorld\033[0m!"
+    message = "Hello there!"
     print(message)
     print(Parser().parse(
         message

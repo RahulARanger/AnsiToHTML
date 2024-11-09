@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ansitohtml"
-version = "0.1.1"
+version = "0.1.2"
 description = "package to convert ansi text to html"
 authors = ["Rahul <saihanumarahul66@gmail.com>"]
 license = "MIT"
