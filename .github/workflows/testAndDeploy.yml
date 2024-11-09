@@ -79,7 +79,7 @@ jobs:
           poetry config pypi-token.pypi $PYPI_TOKEN
           poetry publish --build
 
-      - name: fetch dashboard-version
+      - name: fetch package version
         id: version
         run: bash .github/scripts/get-version.sh
 
@@ -88,7 +88,7 @@ jobs:
         id: release
         with:
           files: dashboard.tar.bz2
-          body: ":rocket: Bump ANSIToHTML version to `${{ steps.version.outputs.VERSION }}`"
+          body: ":rocket: Bump ansitohtml version to `${{ steps.version.outputs.VERSION }}`"
           tag_name: ${{ steps.version.outputs.VERSION }}
           name: "ANSIToHTML v${{ steps.version.outputs.VERSION }}"
           generate_release_notes: true
