@@ -1,13 +1,12 @@
-[tool.poetry]
+[project]
 name = "ansitohtml"
 version = "0.1.2"
 description = "package to convert ansi text to html"
-authors = ["Rahul <saihanumarahul66@gmail.com>"]
-license = "MIT"
-readme = "README.md"
-packages = [{include = "ANSIToHTML"}]
+authors = [
+    {name = "Rahul",email = "saihanumarahul66@gmail.com"}
+]
 maintainers = [
-    "Rahul <saihanumarahul66@gmail.com>"
+    {name = "Rahul",email = "saihanumarahul66@gmail.com"}
 ]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -17,14 +16,17 @@ classifiers = [
     "Intended Audience :: Developers",
     "Operating System :: OS Independent"
 ]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = "^3.11"
+dependencies = [
+]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.2.2"
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+
