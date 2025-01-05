@@ -1,6 +1,6 @@
 [project]
 name = "ansitohtml"
-version = "0.1.2"
+version = "0.1.3"
 description = "package to convert ansi text to html"
 authors = [
     {name = "Rahul",email = "saihanumarahul66@gmail.com"}
