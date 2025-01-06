@@ -1,5 +1,5 @@
 from typing import Dict
-from ANSIToHTML.theme import DEFAULT
+from ansitohtml.theme import DEFAULT
 import pytest
 
 

@@ -93,5 +93,5 @@ jobs:
           files: dashboard.tar.bz2
           body: ":rocket: Bump ansitohtml version to `${{ steps.version.outputs.VERSION }}`"
           tag_name: ${{ steps.version.outputs.VERSION }}
-          name: "ANSIToHTML v${{ steps.version.outputs.VERSION }}"
+          name: "ansitohtml v${{ steps.version.outputs.VERSION }}"
           generate_release_notes: true

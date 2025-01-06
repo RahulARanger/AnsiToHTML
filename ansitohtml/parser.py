@@ -3,7 +3,7 @@ from xml.etree.ElementTree import Element, SubElement, tostring
 from logging import Logger
 from typing import List, NamedTuple, Union, Literal
 from dataclasses import dataclass
-from ANSIToHTML.theme import DEFAULT
+from ansitohtml.theme import DEFAULT
 
 
 class MatchedChunk(NamedTuple):
