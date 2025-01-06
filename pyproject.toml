@@ -1,6 +1,6 @@
 [project]
 name = "ansitohtml"
-version = "0.1.3"
+version = "0.1.4"
 description = "package to convert ansi text to html"
 authors = [
     {name = "Rahul",email = "saihanumarahul66@gmail.com"}
@@ -19,7 +19,7 @@ classifiers = [
 license = {text = "MIT"}
 packages = [{include = "ANSIToHTML"}]
 readme = "README.md"
-requires-python = "^3.11"
+requires-python = ">=3.8"
 dependencies = [
 ]
 
