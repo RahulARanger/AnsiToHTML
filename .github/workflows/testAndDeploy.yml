@@ -72,12 +72,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install poetry
 
+      - name: Build Package
+        run: poetry build
+
       - name: Publish a Package
         env:
           PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
         run: |
           poetry config pypi-token.pypi $PYPI_TOKEN
-          poetry publish --build
+          poetry publish
 
       - name: fetch package version
         id: version
